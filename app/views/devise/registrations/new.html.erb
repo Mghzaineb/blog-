@@ -1,0 +1,84 @@
+<div class="grid-row-2">
+  <div class="relative h-screen w-full">
+    <div class="absolute w-full inset-0 bg-gray-800 bg-opacity-87"></div>
+    <div class="px-6 py-12 text-center w-full md:px-12 lg:py-24 lg:text-left">
+      <div class="w-100 mx-auto text-neutral-800 sm:max-w-2xl md:max-w-3xl lg:max-w-5xl xl:max-w-7xl">
+        <div class="grid items-center gap-12 lg:grid-cols-2">
+          <div class="mt-12 lg:mt-0" style="z-index: 10">
+            <h1 class="mt-15 mb-12 text-5xl font-bold tracking-tight md:text-6xl xl:text-7xl text-[hsl(218,81%,95%)]">
+              The best  <br /><span class="text-[hsl(218,81%,75%)]">Art...</span>
+            </h1>
+            <p class="opacity-70 text-[hsl(218,81%,85%)]">
+              "Immerse your surroundings in the vibrant allure of nature's finest blooms. Explore our diverse collection and elevate every occasion with the perfect floral touch."
+            </p>
+          </div>
+          <div class="mb-2 lg:mb-0">
+       
+            
+            <div class="bg-[hsla(0,0%,100%,0.9)] backdrop-blur-[25px] backdrop-saturate-[200%] block rounded-lg px-6 py-5  dark:bg-[hsla(0,0%,15%,0.9)] dark:shadow-black/20 md:px-12">
+      
+              <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+                <%= render "devise/shared/error_messages", resource: resource %>
+               
+               <div class="field flex mb-8 items-center">
+             
+             <label for="imageInput" class="flex items-center mx-auto space-x-2 cursor-pointer">
+             <div class="bg-gray-600 text-white rounded-full p-5">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+             <path stroke-linecap="round" stroke-linejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
+             </svg>
+
+              </div>
+             </label>
+             <%= f.file_field :image, id: "imageInput", class: "hidden" %>
+                </div>
+  
+                <div class="grid grid-cols-2 gap-6">
+                  <div class="mb-4">
+                    <%= f.label :first_name, "First Name", class: "text-sm font-medium text-gray-700" %>
+                    <%= f.text_field :first_name, autofocus: true, autocomplete: "name", class: "w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" %>
+                  </div>
+                  <div class="mb-4">
+                    <%= f.label :last_name, "Last Name", class: "text-sm font-medium text-gray-700" %>
+                    <%= f.text_field :last_name, autofocus: true, autocomplete: "name", class: "w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" %>
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                  <div class="mb-6">
+                    <%= f.label :email, class: "text-sm font-medium text-gray-700 block mb-2" %>
+                    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" %>
+                  </div> 
+                  <div class="mb-6">
+                    <%= f.label :username, "Username", class: "text-sm font-medium text-gray-700 block mb-2" %>
+                    <%= f.text_field :username, autofocus: true, autocomplete: "username", class: "w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" %>
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                  <div class="mb-6">
+                    <%= f.label :password, class: "text-sm font-medium text-gray-700 block mb-2" %>
+                    <% if @minimum_password_length %>
+                      <p class="text-xs text-gray-500 "><em>(<%= @minimum_password_length %> characters minimum)</em></p>
+                    <% end %>
+                    <%= f.password_field :password, autocomplete: "new-password", class: "w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" %>
+                  </div>
+                  <div class="mb-6">
+                    <%= f.label :password_confirmation, class: "text-sm font-medium text-gray-700 block mb-2" %>
+                    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "w-full px-3 py-2 mt-4  rounded-md border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" %>
+                  </div>
+                  </div>
+                <div class="flex justify-center">
+                  <%= f.submit "Sign up", class: "inline-flex items-center px-4 py-2 bg-gray-700 mx-auto text-white rounded-md hover:bg-indigo-700 font-medium" %>
+                </div>
+               
+              <% end %>
+              <p class="flex justify-center">
+              <%= render "devise/shared/links" %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

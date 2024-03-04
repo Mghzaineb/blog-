@@ -1,0 +1,24 @@
+<div class="py-16 px-20 bg-gray-800 w-screen ">
+  <div class=" px-4 ">
+    <h2 class="text-4xl font-bold text-center text-red-400  mb-8">Articles</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-20">
+      <% @articles.each do |article| %>
+        <% unless article.archived? %>
+          <div class="bg-white rounded-lg shadow-lg p-8">
+            <div class="relative overflow-hidden">
+               <% if article.image.attached? %>
+                <%= image_tag article.image, class: "h-60 w-full object-cover"%>
+              <% else %>
+                <img src="https://cdn-icons-png.flaticon.com/512/4211/4211763.png" class="h-60 w-full object-cover">
+              <% end %>
+              <div class="absolute inset-0 bg-black opacity-40"></div>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mt-4"><%= link_to article.title, article %></h3>
+            <p class="text-gray-500 text-sm mt-2"><%= article.body %></p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+      </div>
+  
+</div>

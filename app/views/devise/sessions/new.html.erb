@@ -1,0 +1,56 @@
+<div class="grid-row-2">
+  <div class="relative h-screen w-full">
+    <div class="absolute w-full inset-0 bg-gray-800 bg-opacity-87"></div>
+    <div class="px-6 py-12 text-center w-full md:px-12 lg:py-24 lg:text-left">
+      <div class="w-100 mx-auto text-neutral-800 sm:max-w-2xl md:max-w-3xl lg:max-w-5xl xl:max-w-7xl">
+        <div class="grid items-center gap-12 lg:grid-cols-2">
+          <div class="mt-12 lg:mt-0" style="z-index: 10">
+            <h1 class="mt-15 mb-12 text-5xl font-bold tracking-tight md:text-6xl xl:text-7xl text-[hsl(218,81%,95%)]">
+              The best  <br /><span class="text-[hsl(218,81%,75%)]">Art...</span>
+            </h1>
+            <p class="opacity-70 text-[hsl(218,81%,85%)]">
+              "Immerse your surroundings in the vibrant allure of nature's finest blooms. Explore our diverse collection and elevate every occasion with the perfect floral touch."
+            </p>
+          </div>
+          <div class="relative mb-12 lg:mb-0">
+            <div class="relative mb-12 lg:mb-0">
+              <div id="radius-shape-1" class="absolute rounded-full shadow-lg"></div>
+              <div id="radius-shape-2" class="absolute shadow-lg"></div>
+              <div class="relative bg-[hsla(0,0%,100%,0.9)] backdrop-blur-[25px] backdrop-saturate-[200%] block rounded-lg px-6 py-12 dark:bg-[hsla(0,0%,15%,0.9)] dark:shadow-black/20 md:px-12">
+               
+                
+                <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                 <div class="mb-6">
+                  <div class="field">
+                    <%= f.label :email , class: "text-sm font-medium text-gray-700 block mb-2"%><br />
+                    <%= f.email_field :email, autofocus: true, autocomplete: "email" , class: "w-full px-3 py-2   rounded-md border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"%>
+                  </div>
+                  </div>
+                   <div class="mb-6">
+                   <div class="field">
+                    <%= f.label :password , class: "text-sm font-medium text-gray-700 block mb-2" %><br />
+                    <%= f.password_field :password, autocomplete: "current-password" , class: "w-full px-3 py-2  rounded-md border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"%>
+                  </div>
+                   </div>
+                  <% if devise_mapping.rememberable? %>
+                    <div class="field">
+                      <%= f.check_box :remember_me %>
+                      <%= f.label :remember_me %>
+                    </div>
+                  <% end %>
+
+                  <div class="actions flex justify-center">
+                    <%= f.submit "Log in" , class: "inline-flex items-center px-4 py-2 bg-gray-700 text-white rounded-md hover:bg-indigo-700 font-medium"%>
+                  </div>
+                <% end %>
+                    <div class="flex justify-center">
+                <%= render "devise/shared/links" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

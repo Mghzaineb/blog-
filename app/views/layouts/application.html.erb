@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog</title>
+
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  
+  <%= javascript_include_tag "https://cdn.tailwindcss.com" %>
+ 
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  
+ 
+ 
+</head>
+
+
+<body class="overflow-x-hidden ">
+  <nav class="bg-white border-gray-200 border-b py-1.7 dark:bg-gray-900">
+    <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
+      <a href="<%= root_path %>" class="flex items-center">
+        <img src="https://www.svgrepo.com/show/499962/music.svg" class="h-6 mr-3 sm:h-9" alt="Landwind Logo">
+        <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white" class="font-bold tracking-tight text-4xl text-gray-900"> Art...</span>
+      </a>
+
+     <div class="flex items-center lg:order-2">
+  <% if model_signed_in? %>
+    <% if current_model.image.attached? %>
+    
+      <div class="relative cursor-pointer">
+
+  <div class="group" onclick="toggleDropdown()">
+    <%= image_tag current_model.image, style: "display:inline-block; height:45px; width:50px; border-radius:70%" %>
+  </div>
+  <div class="absolute right-0 mt-2 bg-white border rounded-md shadow-md hidden" id="dropdownContainer">
+    <p class="block px-10 py-2  text-blue-900 not-italic"><%= current_model.username %></p>
+  <div class="flex items-center px-18 py-2 hover:bg-gray-200">
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 0 1 1.37.49l1.296 2.247a1.125 1.125 0 0 1-.26 1.431l-1.003.827c-.293.241-.438.613-.43.992a7.723 7.723 0 0 1 0 .255c-.008.378.137.75.43.991l1.004.827c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 0 1-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.47 6.47 0 0 1-.22.128c-.331.183-.581.495-.644.869l-.213 1.281c-.09.543-.56.94-1.11.94h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 0 1-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 0 1-1.369-.49l-1.297-2.247a1.125 1.125 0 0 1 .26-1.431l1.004-.827c.292-.24.437-.613.43-.991a6.932 6.932 0 0 1 0-.255c.007-.38-.138-.751-.43-.992l-1.004-.827a1.125 1.125 0 0 1-.26-1.43l1.297-2.247a1.125 1.125 0 0 1 1.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.086.22-.128.332-.183.582-.495.644-.869l.214-1.28Z" />
+    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+  </svg>
+  <%= link_to "Edit", edit_model_registration_path %>
+</div>
+ <div class="block px-18 py-2 flex items-center hover:bg-gray-200">
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.2" stroke="currentColor" class="w-5 h-5 mr-2">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9" />
+  </svg>
+  <%= link_to "Log Out", destroy_model_session_path, method: :delete %>
+</div>
+  </div>
+</div>
+    <% else %>
+   
+       <div class="relative cursor-pointer">
+
+  <div class="group" onclick="toggleDropdown()">
+     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.7" stroke="currentColor" class="w-10 h-10">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+</svg>
+
+  </div>
+  <div class="absolute right-0 mt-2 bg-white border py-2 rounded-md shadow-md hidden" id="dropdownContainer">
+    <p class="block px-10 py-2"><%= current_model.username %></p>
+    <p class="block px-10 py-2"><%= link_to "Edit", edit_model_registration_path %></p>
+    <p class="block px-10 py-2"><%= link_to "Log Out", destroy_model_session_path, method: :delete %></p>
+  </div>
+</div>
+    <% end %>
+  <% end %>
+</div>
+      <div class="items-center justify-between w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
+        <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+          <% if model_signed_in? %>
+
+          <li>
+            <%= link_to "Articles", articles_index_path,
+              class:"block py-2 pl-3 pr-4 text-white bg-purple-700 rounded lg:bg-transparent lg:text-purple-700 lg:p-0 dark:text-white"
+              %>
+          </li>
+           <li>
+            <%= link_to "New Article", new_article_path,
+              class:"block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700" %>
+          </li>
+        
+          <% else %>
+          <li>
+            <%= link_to "Sign Up", new_model_registration_path,
+              class:"block py-2 pl-3 pr-4  text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700" %>
+          </li>
+
+          <li>
+            <%= link_to "Log In", new_model_session_path,
+              class:"block py-2 pl-3  pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700" %>
+          </li>
+          <% end %>
+           
+        </ul>
+      </div>
+    </div>
+
+   
+    </div>
+     
+  </nav>
+  <main class="w-full">
+    <%= yield %>
+  </main>
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    function toggleDropdown() {
+      var dropdownContainer = document.getElementById("dropdownContainer");
+      dropdownContainer.classList.toggle("hidden");
+    }window.toggleDropdown = toggleDropdown;
+  });
+</script>
+</body>
+
+</html>
